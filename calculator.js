@@ -24,6 +24,18 @@ app.post("/",function(req,res){
 // which is the parsed version of HTTP request
 // { num1: '2', num2: '3', submit: '' }
 
+
+app.get("/bmicalculator", function(req,res){
+  res.sendFile(__dirname+"/bmiCalculator.html")
+})
+
+app.post("/bmicalculator", function(req,res){
+  var height = parseFloat(req.body.height);
+  var weight = parseFloat(req.body.weight);
+  var bmi = weight/Math.pow(height,2);
+  res.send("bmi is "+bmi);
+})
+
 app.listen(port, function () {
   console.log('app listening on port 3000');
 });
